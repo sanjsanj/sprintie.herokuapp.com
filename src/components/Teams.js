@@ -17,7 +17,7 @@ const Teams = ({
       </li>
     )));
 
-  const AddTeamTab = () => (
+  const AddTeamButton = () => (
     <li className="nav-item">
       <button
         className="nav-link"
@@ -31,7 +31,7 @@ const Teams = ({
   return (
     <ul className="container nav nav-tabs">
       <TeamTabs />
-      <AddTeamTab />
+      <AddTeamButton />
     </ul>
   );
 };
@@ -44,11 +44,12 @@ function mapStateToProps(state) {
 }
 
 const mapDispatchToProps = dispatch => ({
-  addTeam: () => {
+  addTeam() {
     dispatch(actions.addTeam());
+    dispatch(actions.selectTeam('New Team'));
   },
 
-  selectTeam: (selectedTeam) => {
+  selectTeam(selectedTeam) {
     dispatch(actions.selectTeam(selectedTeam));
   },
 });

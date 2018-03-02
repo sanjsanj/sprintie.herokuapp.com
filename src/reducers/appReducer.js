@@ -1,7 +1,8 @@
-import { SELECT_TEAM } from '../constants';
+import { SELECT_TEAM, TOGGLE_TEAM_OPTIONS } from '../constants';
 
 export const initialState = {
   selectedTeam: null,
+  showTeamOptions: false,
 };
 
 export const appReducer = (state = initialState, action) => {
@@ -10,6 +11,13 @@ export const appReducer = (state = initialState, action) => {
       return {
         ...state,
         selectedTeam: action.selectedTeam,
+        showTeamOptions: false,
+      };
+
+    case TOGGLE_TEAM_OPTIONS:
+      return {
+        ...state,
+        showTeamOptions: !state.showTeamOptions,
       };
 
     default:
