@@ -10,6 +10,9 @@ export const teamReducer = (state = initialState, action) => {
       return state;
 
     case ADD_TEAM:
+      if (state.teams.includes('New Team')) {
+        return state;
+      }
       return {
         teams: [
           ...state.teams,
