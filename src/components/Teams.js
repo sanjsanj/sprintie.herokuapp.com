@@ -5,20 +5,25 @@ import actions from '../actions';
 const Teams = ({
   teams, selectedTeam, selectTeam, addTeam,
 }) => {
-  const teamTabs = teams.map(team => (
-    <li key={team} className="nav-item">
-      <button onClick={() => { selectTeam(team); }} className={`nav-link ${team === selectedTeam ? 'active' : ''}`}>
-        {team}
-      </button>
+  const TeamTabs = () => (
+    teams.map(team => (
+      <li key={team} className="nav-item">
+        <button onClick={() => { selectTeam(team); }} className={`nav-link ${team === selectedTeam ? 'active' : ''}`}>
+          {team}
+        </button>
+      </li>
+    )));
+
+  const AddTeamTab = () => (
+    <li className="nav-item">
+      <button className="nav-link" onClick={() => { addTeam(); }}>+</button>
     </li>
-  ));
+  );
 
   return (
     <ul className="container nav nav-tabs">
-      {teamTabs}
-      <li className="nav-item">
-        <button className="nav-link" onClick={() => { addTeam(); }}>+</button>
-      </li>
+      <TeamTabs />
+      <AddTeamTab />
     </ul>
   );
 };
