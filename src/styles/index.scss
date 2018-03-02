@@ -1,0 +1,17 @@
+body {
+  color: white;
+  -webkit-font-smoothing: antialiased;
+}
+
+header {
+  background-color: #3D5068;
+  border-bottom: 1px solid #3D3343;
+  padding: 15px;
+}
+
+.app-title {
+    display: inline-block;
+    position: relative;
+    top: 10px;
+    margin-left: 20px;
+}
