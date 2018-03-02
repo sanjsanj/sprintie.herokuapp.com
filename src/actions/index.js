@@ -1,4 +1,4 @@
-import { ADD_TEAM, SELECT_TEAM } from '../constants';
+import { ADD_TEAM, SELECT_TEAM, SHOW_TEAM_OPTIONS } from '../constants';
 
 const actions = {
   addTeam() {
@@ -10,6 +10,13 @@ const actions = {
   selectTeam(selectedTeam) {
     return {
       type: SELECT_TEAM,
+      selectedTeam,
+    };
+  },
+
+  showTeamOptions(selectedTeam) {
+    return {
+      type: SHOW_TEAM_OPTIONS,
       selectedTeam,
     };
   },

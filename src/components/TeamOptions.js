@@ -2,13 +2,19 @@ import React from 'react';
 import { connect } from 'react-redux';
 import actions from '../actions';
 
-const TeamOptions = ({ selectedTeam }) => {
+const TeamOptions = ({ selectedTeam, showTeamOptions }) => {
   if (selectedTeam === null) {
     return null;
   }
   return (
-    <div className="container">
-      <button type="button" className="btn btn-info">{selectedTeam} Options</button>
+    <div className="container options">
+      <button
+        type="button"
+        className="btn btn-info"
+        onClick={() => { showTeamOptions(selectedTeam); }}
+      >
+        {selectedTeam} Options
+      </button>
     </div>
   );
 };
@@ -20,8 +26,8 @@ function mapStateToProps(state) {
 }
 
 const mapDispatchToProps = dispatch => ({
-  addTeam: () => {
-    dispatch(actions.addTeam());
+  showTeamOptions: (selectedTeam) => {
+    dispatch(actions.showTeamOptions(selectedTeam));
   },
 });
 

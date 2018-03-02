@@ -8,7 +8,10 @@ const Teams = ({
   const TeamTabs = () => (
     teams.map(team => (
       <li key={team} className="nav-item">
-        <button onClick={() => { selectTeam(team); }} className={`nav-link ${team === selectedTeam ? 'active' : ''}`}>
+        <button
+          onClick={() => { selectTeam(team); }}
+          className={`nav-link ${team === selectedTeam ? 'active' : ''}`}
+        >
           {team}
         </button>
       </li>
@@ -16,7 +19,12 @@ const Teams = ({
 
   const AddTeamTab = () => (
     <li className="nav-item">
-      <button className="nav-link" onClick={() => { addTeam(); }}>+</button>
+      <button
+        className="nav-link"
+        onClick={() => { addTeam(); }}
+      >
+        +
+      </button>
     </li>
   );
 
