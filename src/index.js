@@ -8,8 +8,14 @@ import './styles/index.css';
 import reducers from './reducers';
 import App from './components/App';
 import registerServiceWorker from './registerServiceWorker';
+import { loadState, saveState } from './localStorage';
 
-const store = createStore(reducers);
+const persistedState = loadState();
+const store = createStore(reducers, persistedState);
+
+store.subscribe(() => {
+  saveState(store.getState());
+});
 
 ReactDOM.render(
   <Provider store={store}>
