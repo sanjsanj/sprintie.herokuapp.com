@@ -10,7 +10,7 @@ const TeamSettingsToggle = ({ selectedTeam, toggleTeamOptions }) => {
     <div className="container options row">
       <button
         type="button"
-        className="btn btn-info col"
+        className="btn btn-light col"
         onClick={() => { toggleTeamOptions(); }}
       >
         {selectedTeam} Settings
@@ -18,12 +18,16 @@ const TeamSettingsToggle = ({ selectedTeam, toggleTeamOptions }) => {
 
       <div className="col" />
 
+      <button className="btn btn-light">Add Member</button>
+
+      <div className="col" />
+
       <button
         type="button"
-        className="btn btn-success col"
+        className="btn btn-info col"
         onClick={() => { }}
       >
-        Calculate {selectedTeam} Points
+        Calculate {selectedTeam} Sprint Points
       </button>
     </div>
   );

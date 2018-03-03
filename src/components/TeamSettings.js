@@ -14,8 +14,7 @@ const TeamSettings = ({ showTeamOptions, selectedTeam, updateTeamSettings }) => 
                 className="form-control"
                 type="text"
                 id="teamName"
-                // placeholder={selectedTeam.name}
-                placeholder="Enter Name..."
+                placeholder={selectedTeam.name}
                 onChange={(event) => {
                   updateTeamSettings({
                     oldName: selectedTeam.name,
