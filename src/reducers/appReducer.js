@@ -1,4 +1,4 @@
-import { ADD_TEAM, SELECT_TEAM, TOGGLE_TEAM_OPTIONS } from '../constants';
+import { ADD_TEAM, SELECT_TEAM, TOGGLE_TEAM_OPTIONS, UPDATE_TEAM_SETTINGS } from '../constants';
 
 export const initialState = {
   selectedTeam: null,
@@ -46,6 +46,24 @@ export const appReducer = (state = initialState, action) => {
       return {
         ...state,
         showTeamOptions: !state.showTeamOptions,
+      };
+
+    case UPDATE_TEAM_SETTINGS:
+      return {
+        ...state,
+        teams: [
+          ...state.teams.map((team) => {
+            if (team.name === action.options.oldName) {
+              return {
+                name: action.options.newName || team.name,
+                weeksPerSprint: action.options.weeksPerSprint || team.weeksPerSprint,
+                ptsPerDevPerDay: action.options.ptsPerDevPerDay || team.ptsPerDevPerDay,
+              };
+            }
+            return team;
+          }),
+        ],
+        selectedTeam: action.options.newName || state.selectedTeam,
       };
 
     default:

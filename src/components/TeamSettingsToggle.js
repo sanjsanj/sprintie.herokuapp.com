@@ -7,13 +7,23 @@ const TeamSettingsToggle = ({ selectedTeam, toggleTeamOptions }) => {
     return null;
   }
   return (
-    <div className="container options">
+    <div className="container options row">
       <button
         type="button"
-        className="btn btn-info"
+        className="btn btn-info col"
         onClick={() => { toggleTeamOptions(); }}
       >
         {selectedTeam} Settings
+      </button>
+
+      <div className="col" />
+
+      <button
+        type="button"
+        className="btn btn-success col"
+        onClick={() => { }}
+      >
+        Calculate {selectedTeam} Points
       </button>
     </div>
   );
