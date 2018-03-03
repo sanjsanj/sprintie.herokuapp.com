@@ -16,6 +16,7 @@
     "scss:watch": "npm run scss && node-sass-chokidar src/styles/ -o src/styles/ --watch --recursive",
     "start": "react-scripts start",
     "build": "react-scripts build",
+    "build:watch": "node src/watch.js",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
   },

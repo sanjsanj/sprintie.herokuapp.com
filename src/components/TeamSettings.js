@@ -6,13 +6,18 @@ const TeamSettings = ({ showTeamOptions }) => {
   if (showTeamOptions) {
     return (
       <div className="container options">
-        <button
-          type="button"
-          className="btn btn-info"
-          onClick={() => { }}
-        >
-          Team Settings
-        </button>
+        <form>
+          <div className="form-row">
+            <div className="form-group col">
+              <label htmlFor="weeksPerSprint">Weeks per sprint</label>
+              <input className="form-control" type="number" id="weeksPerSprint" placeholder="1" step="1" min="1" max="2" />
+            </div>
+            <div className="form-group col">
+              <label htmlFor="pointsPerDevPerDay">Points per dev per day</label>
+              <input className="form-control" type="number" id="pointsPerDevPerDay" placeholder="1" step="0.5" min="0.5" max="2" />
+            </div>
+          </div>
+        </form>
       </div>
     );
   }
