@@ -3,6 +3,7 @@ import Header from './Header';
 import Teams from './Teams';
 import TeamSettingsToggle from './TeamSettingsToggle';
 import TeamSettings from './TeamSettings';
+import Members from './Members';
 
 const App = () => (
   <div className="app">
@@ -10,6 +11,7 @@ const App = () => (
     <Teams />
     <TeamSettingsToggle />
     <TeamSettings />
+    <Members />
   </div>
 );
 

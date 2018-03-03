@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import actions from '../actions';
+import { getSelectedTeam } from '../helpers';
 
 const TeamSettings = ({ showTeamOptions, selectedTeam, updateTeamSettings }) => {
   if (showTeamOptions) {
@@ -66,11 +67,6 @@ const TeamSettings = ({ showTeamOptions, selectedTeam, updateTeamSettings }) => 
   }
   return null;
 };
-
-function getSelectedTeam(state) {
-  const { selectedTeam } = state.appReducer;
-  return state.appReducer.teams.filter(team => team.name === selectedTeam)[0];
-}
 
 function mapStateToProps(state) {
   return {
