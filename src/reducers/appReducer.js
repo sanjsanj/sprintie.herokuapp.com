@@ -1,20 +1,9 @@
-import { ADD_TEAM, SELECT_TEAM, TOGGLE_TEAM_OPTIONS, UPDATE_TEAM_SETTINGS } from '../constants';
+import { ADD_TEAM, SELECT_TEAM, TOGGLE_TEAM_OPTIONS, UPDATE_TEAM_SETTINGS, ADD_MEMBER } from '../constants';
 
 export const initialState = {
   selectedTeam: null,
   showTeamOptions: false,
-  teams: [
-    {
-      name: 'Sparkles',
-      weeksPerSprint: 2,
-      ptsPerDevPerDay: 1,
-    },
-    {
-      name: 'Core',
-      weeksPerSprint: 1,
-      ptsPerDevPerDay: 1,
-    },
-  ],
+  teams: [],
 };
 
 export const appReducer = (state = initialState, action) => {
@@ -31,6 +20,7 @@ export const appReducer = (state = initialState, action) => {
             name: 'New Team',
             weeksPerSprint: 1,
             ptsPerDevPerDay: 1,
+            members: [],
           },
         ],
       };
@@ -55,6 +45,7 @@ export const appReducer = (state = initialState, action) => {
           ...state.teams.map((team) => {
             if (team.name === action.options.oldName) {
               return {
+                ...team, // not sure about this, want to make sure member transfer across
                 name: action.options.newName || team.name,
                 weeksPerSprint: action.options.weeksPerSprint || team.weeksPerSprint,
                 ptsPerDevPerDay: action.options.ptsPerDevPerDay || team.ptsPerDevPerDay,
@@ -64,6 +55,33 @@ export const appReducer = (state = initialState, action) => {
           }),
         ],
         selectedTeam: action.options.newName || state.selectedTeam,
+      };
+
+    case ADD_MEMBER:
+      return {
+        ...state,
+        teams: [
+          ...state.teams.map((team) => {
+            if (team.name === state.selectedTeam) {
+              // return existing team if unnamed member exists
+              if (team.members.map(member => (member.name === 'Enter Name')).includes(true)) {
+                return team;
+              }
+              // return team with new unnamed member
+              return {
+                ...team,
+                members: [
+                  ...team.members,
+                  {
+                    name: 'Enter Name',
+                  },
+                ],
+              };
+            }
+            // return teams that aren't selected
+            return team;
+          }),
+        ],
       };
 
     default:

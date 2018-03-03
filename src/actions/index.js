@@ -1,4 +1,4 @@
-import { ADD_TEAM, SELECT_TEAM, TOGGLE_TEAM_OPTIONS, UPDATE_TEAM_SETTINGS } from '../constants';
+import { ADD_TEAM, SELECT_TEAM, TOGGLE_TEAM_OPTIONS, UPDATE_TEAM_SETTINGS, ADD_MEMBER } from '../constants';
 
 const actions = {
   addTeam() {
@@ -24,6 +24,12 @@ const actions = {
     return {
       type: UPDATE_TEAM_SETTINGS,
       options,
+    };
+  },
+
+  addMember() {
+    return {
+      type: ADD_MEMBER,
     };
   },
 };

@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import actions from '../actions';
 
-const TeamSettingsToggle = ({ selectedTeam, toggleTeamOptions }) => {
+const TeamSettingsToggle = ({ selectedTeam, toggleTeamOptions, addMember }) => {
   if (selectedTeam === null) {
     return null;
   }
@@ -18,7 +18,12 @@ const TeamSettingsToggle = ({ selectedTeam, toggleTeamOptions }) => {
 
       <div className="col" />
 
-      <button className="btn btn-light">Add Member</button>
+      <button
+        className="btn btn-light"
+        onClick={() => { addMember(); }}
+      >
+        Add Member
+      </button>
 
       <div className="col" />
 
@@ -40,8 +45,11 @@ function mapStateToProps(state) {
 }
 
 const mapDispatchToProps = dispatch => ({
-  toggleTeamOptions: () => {
+  toggleTeamOptions() {
     dispatch(actions.toggleTeamOptions());
+  },
+  addMember() {
+    dispatch(actions.addMember());
   },
 });
 
