@@ -7,12 +7,12 @@ const Teams = ({
 }) => {
   const TeamTabs = () => (
     teams.map(team => (
-      <li key={team} className="nav-item">
+      <li key={team.name} className="nav-item">
         <button
-          onClick={() => { selectTeam(team); }}
-          className={`nav-link ${team === selectedTeam ? 'active' : ''}`}
+          onClick={() => { selectTeam(team.name); }}
+          className={`nav-link ${team.name === selectedTeam ? 'active' : ''}`}
         >
-          {team}
+          {team.name}
         </button>
       </li>
     )));
@@ -38,7 +38,7 @@ const Teams = ({
 
 function mapStateToProps(state) {
   return {
-    teams: state.teamReducer.teams,
+    teams: state.appReducer.teams,
     selectedTeam: state.appReducer.selectedTeam,
   };
 }
