@@ -6,6 +6,28 @@ export function getSelectedTeam(state) {
 }
 
 export function getPoints(selectedTeam) {
-  const dialogue = '';
-  return dialogue;
+  const teamName = selectedTeam.name;
+  const daysInSprint = selectedTeam.weeksPerSprint * 5;
+  const potentialPoints = selectedTeam.members.length * daysInSprint * selectedTeam.ptsPerDevPerDay;
+
+  const devAwayDays = selectedTeam.members.reduce(
+    (sum, member) =>
+      sum + Number(member.daysOffEverySprint) + Number(member.daysOffThisSprint),
+    0,
+  );
+  const devAwayPoints = devAwayDays * selectedTeam.ptsPerDevPerDay;
+
+  const meetingDays = selectedTeam.adjustmentPts;
+  const meetingPoints = meetingDays * selectedTeam.ptsPerDevPerDay;
+
+  const actualPoints = potentialPoints - devAwayPoints - meetingPoints;
+
+  // eslint-disable-next-line
+  alert(`
+    ${teamName} has ${daysInSprint} days in sprint\n
+    ${potentialPoints} potential points in sprint\n
+    ${devAwayDays} dev away days\n
+    ${meetingDays} meeting days\n
+    *** ${actualPoints} actual points this sprint ***
+    `);
 }

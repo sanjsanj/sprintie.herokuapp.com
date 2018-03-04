@@ -92,7 +92,7 @@ export const appReducer = (state = initialState, action) => {
                   {
                     name: 'Enter Name',
                     memberId: v4(),
-                    dayOffEverySprint: 0,
+                    daysOffEverySprint: 0,
                     daysOffThisSprint: 0,
                   },
                 ],
@@ -116,7 +116,7 @@ export const appReducer = (state = initialState, action) => {
                     return {
                       ...member,
                       name: action.options.name || member.name,
-                      dayOffEverySprint: action.options.dayOffEverySprint || member.dayOffEverySprint,
+                      daysOffEverySprint: action.options.daysOffEverySprint || member.daysOffEverySprint,
                       daysOffThisSprint: action.options.daysOffThisSprint || member.daysOffThisSprint,
                     };
                   }

@@ -33,7 +33,7 @@ const Members = ({ selectedTeam, updateMemberSettings, deleteMember }) => (
             <td>
               <button
                 className="btn btn-info"
-                // eslint-disable-next-line no-alert, no-restricted-globals, no-undef
+                // eslint-disable-next-line
                 onClick={() => { if (confirm(`Delete ${member.name}?`)) { deleteMember(member.memberId); } }}
               >
                 Delete
@@ -44,14 +44,14 @@ const Members = ({ selectedTeam, updateMemberSettings, deleteMember }) => (
                 <input
                   className="form-control"
                   type="number"
-                  placeholder={member.dayOffEverySprint}
+                  placeholder={member.daysOffEverySprint}
                   step=".5"
                   min="0"
                   max="10"
                   onChange={(event) => {
                     updateMemberSettings({
                       memberId: member.memberId,
-                      dayOffEverySprint: event.target.value,
+                      daysOffEverySprint: event.target.value,
                     });
                   }}
                 />

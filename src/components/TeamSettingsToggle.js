@@ -32,7 +32,7 @@ const TeamSettingsToggle = ({
 
       <button
         className="btn btn-light"
-        // eslint-disable-next-line no-alert, no-restricted-globals, no-undef
+        // eslint-disable-next-line
         onClick={() => { if (confirm(`Reset ${selectedTeam.name} Sprint?`)) { resetSprint(); } }}
       >
         Reset This Sprint
