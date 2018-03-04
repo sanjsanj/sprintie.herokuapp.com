@@ -6,6 +6,7 @@ import {
   TOGGLE_TEAM_OPTIONS,
   UPDATE_MEMBER_SETTINGS,
   UPDATE_TEAM_SETTINGS,
+  DELETE_MEMBER,
 } from '../constants';
 
 const actions = {
@@ -51,6 +52,13 @@ const actions = {
     return {
       type: UPDATE_MEMBER_SETTINGS,
       options,
+    };
+  },
+
+  deleteMember(memberId) {
+    return {
+      type: DELETE_MEMBER,
+      memberId,
     };
   },
 };

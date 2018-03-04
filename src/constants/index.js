@@ -1,5 +1,6 @@
 export const ADD_MEMBER = 'add_member';
 export const ADD_TEAM = 'add_team';
+export const DELETE_MEMBER = 'delete_member';
 export const DELETE_TEAM = 'delete_team';
 export const GET_TEAMS = 'get_teams';
 export const SELECT_TEAM = 'select_team';

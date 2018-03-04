@@ -1,5 +1,3 @@
-/* global confirm */
-
 import React from 'react';
 import { connect } from 'react-redux';
 import actions from '../actions';
@@ -69,7 +67,8 @@ const TeamSettings = ({
               <button
                 id="deleteTeam"
                 className="btn btn-light"
-                onClick={() => { if (confirm(`Delete ${selectedTeam.name}?`)) { deleteTeam(); } }} // eslint-disable-line no-alert, no-restricted-globals
+                // eslint-disable-next-line no-alert, no-restricted-globals, no-undef
+                onClick={() => { if (confirm(`Delete ${selectedTeam.name}?`)) { deleteTeam(); } }}
               >
                 Delete {selectedTeam.name}
               </button>

@@ -8,6 +8,7 @@ import {
   TOGGLE_TEAM_OPTIONS,
   UPDATE_MEMBER_SETTINGS,
   UPDATE_TEAM_SETTINGS,
+  DELETE_MEMBER,
 } from '../constants';
 
 export const initialState = {
@@ -127,6 +128,24 @@ export const appReducer = (state = initialState, action) => {
                   return member;
                 }),
                 // update their settings or default
+              };
+            }
+            return team;
+          }),
+        ],
+      };
+
+    case DELETE_MEMBER:
+      return {
+        ...state,
+        teams: [
+          ...state.teams.map((team) => {
+          // get the selected team
+            if (team.name === state.selectedTeam) {
+              return {
+                ...team,
+                members: team.members.filter(member => (member.memberId !== action.memberId)),
+              // update their settings or default
               };
             }
             return team;

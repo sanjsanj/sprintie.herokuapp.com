@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import actions from '../actions';
 import { getSelectedTeam } from '../helpers';
 
-const Members = ({ selectedTeam, updateMemberSettings }) => (
+const Members = ({ selectedTeam, updateMemberSettings, deleteMember }) => (
   <div className="container">
     <table className="table table-striped">
       <thead>
@@ -31,7 +31,13 @@ const Members = ({ selectedTeam, updateMemberSettings }) => (
               />
             </td>
             <td>
-              <button className="btn btn-info">Delete</button>
+              <button
+                className="btn btn-info"
+                // eslint-disable-next-line no-alert, no-restricted-globals, no-undef
+                onClick={() => { if (confirm(`Delete ${member.name}?`)) { deleteMember(member.memberId); } }}
+              >
+                Delete
+              </button>
             </td>
             <td>
               <div className="">
@@ -63,6 +69,9 @@ const mapDispatchToProps = dispatch => ({
   },
   updateMemberSettings(options) {
     dispatch(actions.updateMemberSettings(options));
+  },
+  deleteMember(memberId) {
+    dispatch(actions.deleteMember(memberId));
   },
 });
 
