@@ -1,9 +1,10 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import actions from '../actions';
+import { getSelectedTeam, getPoints } from '../helpers';
 
 const TeamSettingsToggle = ({
-  selectedTeam, toggleTeamOptions, addMember, resetSprint,
+  selectedTeam, toggleTeamOptions, addMember, resetSprint, calculatePoints,
 }) => {
   if (selectedTeam === null) {
     return null;
@@ -15,7 +16,7 @@ const TeamSettingsToggle = ({
         className="btn btn-light col"
         onClick={() => { toggleTeamOptions(); }}
       >
-        {selectedTeam} Settings
+        {selectedTeam.name} Settings
       </button>
 
       <div className="col" />
@@ -32,7 +33,7 @@ const TeamSettingsToggle = ({
       <button
         className="btn btn-light"
         // eslint-disable-next-line no-alert, no-restricted-globals, no-undef
-        onClick={() => { if (confirm(`Reset ${selectedTeam} Sprint?`)) { resetSprint(); } }}
+        onClick={() => { if (confirm(`Reset ${selectedTeam.name} Sprint?`)) { resetSprint(); } }}
       >
         Reset This Sprint
       </button>
@@ -42,9 +43,9 @@ const TeamSettingsToggle = ({
       <button
         type="button"
         className="btn btn-info col"
-        onClick={() => { }}
+        onClick={() => { calculatePoints(selectedTeam); }}
       >
-        Calculate {selectedTeam} Sprint Points
+        Calculate {selectedTeam.name} Sprint Points
       </button>
     </div>
   );
@@ -52,7 +53,7 @@ const TeamSettingsToggle = ({
 
 function mapStateToProps(state) {
   return {
-    selectedTeam: state.appReducer.selectedTeam,
+    selectedTeam: getSelectedTeam(state),
   };
 }
 
@@ -65,6 +66,9 @@ const mapDispatchToProps = dispatch => ({
   },
   resetSprint() {
     dispatch(actions.resetSprint());
+  },
+  calculatePoints(selectedTeam) {
+    getPoints(selectedTeam);
   },
 });
 

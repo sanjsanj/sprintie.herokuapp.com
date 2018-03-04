@@ -5,4 +5,7 @@ export function getSelectedTeam(state) {
   };
 }
 
-export const a = 1;
+export function getPoints(selectedTeam) {
+  const dialogue = '';
+  return dialogue;
+}

@@ -33,6 +33,7 @@ export const appReducer = (state = initialState, action) => {
             weeksPerSprint: 1,
             ptsPerDevPerDay: 1,
             members: [],
+            adjustmentPts: 0,
           },
         ],
       };
@@ -69,6 +70,7 @@ export const appReducer = (state = initialState, action) => {
                 name: action.options.newName || team.name,
                 weeksPerSprint: action.options.weeksPerSprint || team.weeksPerSprint,
                 ptsPerDevPerDay: action.options.ptsPerDevPerDay || team.ptsPerDevPerDay,
+                adjustmentPts: action.options.adjustmentPts || team.adjustmentPts,
               };
             }
             return team;
