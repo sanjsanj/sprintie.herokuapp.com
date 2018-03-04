@@ -2,7 +2,9 @@ import React from 'react';
 import { connect } from 'react-redux';
 import actions from '../actions';
 
-const TeamSettingsToggle = ({ selectedTeam, toggleTeamOptions, addMember }) => {
+const TeamSettingsToggle = ({
+  selectedTeam, toggleTeamOptions, addMember, resetSprint,
+}) => {
   if (selectedTeam === null) {
     return null;
   }
@@ -29,9 +31,10 @@ const TeamSettingsToggle = ({ selectedTeam, toggleTeamOptions, addMember }) => {
 
       <button
         className="btn btn-light"
-        onClick={() => { }}
+        // eslint-disable-next-line no-alert, no-restricted-globals, no-undef
+        onClick={() => { if (confirm(`Reset ${selectedTeam} Sprint?`)) { resetSprint(); } }}
       >
-        Reset this sprint
+        Reset This Sprint
       </button>
 
       <div className="col" />
@@ -59,6 +62,9 @@ const mapDispatchToProps = dispatch => ({
   },
   addMember() {
     dispatch(actions.addMember());
+  },
+  resetSprint() {
+    dispatch(actions.resetSprint());
   },
 });
 

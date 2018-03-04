@@ -146,6 +146,20 @@ export const appReducer = (state = initialState, action) => {
     case RESET_SPRINT:
       return {
         ...state,
+        teams: [
+          ...state.teams.map((team) => {
+            if (team.name === state.selectedTeam) {
+              return {
+                ...team,
+                members: team.members.map(member => ({
+                  ...member,
+                  daysOffThisSprint: 0,
+                })),
+              };
+            }
+            return team;
+          }),
+        ],
       };
 
     default:
