@@ -60,7 +60,7 @@ export const appReducer = (state = initialState, action) => {
           ...state.teams.map((team) => {
             if (team.name === action.options.oldName) {
               return {
-                ...team, // not sure about this, want to make sure member transfer across
+                ...team,
                 name: action.options.newName || team.name,
                 weeksPerSprint: action.options.weeksPerSprint || team.weeksPerSprint,
                 ptsPerDevPerDay: action.options.ptsPerDevPerDay || team.ptsPerDevPerDay,
