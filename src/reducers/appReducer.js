@@ -1,9 +1,12 @@
+import { v4 } from 'uuid';
+
 import {
   ADD_MEMBER,
   ADD_TEAM,
   DELETE_TEAM,
   SELECT_TEAM,
   TOGGLE_TEAM_OPTIONS,
+  UPDATE_MEMBER_SETTINGS,
   UPDATE_TEAM_SETTINGS,
 } from '../constants';
 
@@ -79,9 +82,9 @@ export const appReducer = (state = initialState, action) => {
           ...state.teams.map((team) => {
             if (team.name === state.selectedTeam) {
               // return existing team if unnamed member exists
-              if (team.members.map(member => (member.name === 'Enter Name')).includes(true)) {
-                return team;
-              }
+              // if (team.members.map(member => (member.name === 'Enter Name')).includes(true)) {
+              //   return team;
+              // }
               // return team with new unnamed member
               return {
                 ...team,
@@ -89,11 +92,43 @@ export const appReducer = (state = initialState, action) => {
                   ...team.members,
                   {
                     name: 'Enter Name',
+                    memberId: v4(),
+                    dayOffEverySprint: 0,
+                    daysOffThisSprint: 0,
                   },
                 ],
               };
             }
             // return teams that aren't selected
+            return team;
+          }),
+        ],
+      };
+
+    case UPDATE_MEMBER_SETTINGS:
+      return {
+        ...state,
+        teams: [
+          ...state.teams.map((team) => {
+            // get the selected team
+            if (team.name === state.selectedTeam) {
+              return {
+                ...team,
+                members: team.members.map((member) => {
+                  // get the right member
+                  if (member.memberId === action.options.memberId) {
+                    return {
+                      ...member,
+                      name: action.options.name || member.name,
+                      dayOffEverySprint: action.options.dayOffEverySprint || member.dayOffEverySprint,
+                      daysOffThisSprint: action.options.daysOffThisSprint || member.daysOffThisSprint,
+                    };
+                  }
+                  return member;
+                }),
+                // update their settings or default
+              };
+            }
             return team;
           }),
         ],

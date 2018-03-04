@@ -4,6 +4,7 @@ import {
   DELETE_TEAM,
   SELECT_TEAM,
   TOGGLE_TEAM_OPTIONS,
+  UPDATE_MEMBER_SETTINGS,
   UPDATE_TEAM_SETTINGS,
 } from '../constants';
 
@@ -43,6 +44,13 @@ const actions = {
   addMember() {
     return {
       type: ADD_MEMBER,
+    };
+  },
+
+  updateMemberSettings(options) {
+    return {
+      type: UPDATE_MEMBER_SETTINGS,
+      options,
     };
   },
 };

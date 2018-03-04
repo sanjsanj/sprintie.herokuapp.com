@@ -28,6 +28,15 @@ const TeamSettingsToggle = ({ selectedTeam, toggleTeamOptions, addMember }) => {
       <div className="col" />
 
       <button
+        className="btn btn-light"
+        onClick={() => { }}
+      >
+        Reset this sprint
+      </button>
+
+      <div className="col" />
+
+      <button
         type="button"
         className="btn btn-info col"
         onClick={() => { }}
