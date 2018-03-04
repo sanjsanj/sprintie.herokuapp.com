@@ -25,6 +25,7 @@ export function getPoints(selectedTeam) {
   // eslint-disable-next-line
   alert(`
     ${teamName} has ${daysInSprint} days in sprint\n
+    And ${selectedTeam.members.length} number of devs
     ${potentialPoints} potential points in sprint\n
     ${devAwayDays} dev away days\n
     ${meetingDays} meeting days\n
