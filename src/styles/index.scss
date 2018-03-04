@@ -7,10 +7,14 @@ body {
 }
 
 header {
-  background-color: #3D5068;
+  background-color: #17a2b8;
   border-bottom: 1px solid #3D3343;
   padding: 15px;
   margin-bottom: 20px;
+
+  img {
+    height: 100px;
+  }
 }
 
 .app-title {
