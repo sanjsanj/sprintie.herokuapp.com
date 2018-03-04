@@ -1,5 +1,5 @@
 import React from 'react';
-import Header from './Header';
+import Header from './Header.js';
 import Teams from './Teams';
 import TeamSettingsToggle from './TeamSettingsToggle';
 import TeamSettings from './TeamSettings';
