@@ -10,8 +10,7 @@ import App from './components/App';
 import registerServiceWorker from './registerServiceWorker';
 import { loadState, saveState } from './localStorage';
 
-const persistedState = loadState();
-const store = createStore(reducers, persistedState);
+const store = createStore(reducers, loadState());
 
 store.subscribe(() => {
   saveState(store.getState());

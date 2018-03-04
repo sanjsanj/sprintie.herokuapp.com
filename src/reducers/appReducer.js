@@ -1,4 +1,11 @@
-import { ADD_TEAM, SELECT_TEAM, TOGGLE_TEAM_OPTIONS, UPDATE_TEAM_SETTINGS, ADD_MEMBER } from '../constants';
+import {
+  ADD_MEMBER,
+  ADD_TEAM,
+  DELETE_TEAM,
+  SELECT_TEAM,
+  TOGGLE_TEAM_OPTIONS,
+  UPDATE_TEAM_SETTINGS,
+} from '../constants';
 
 export const initialState = {
   selectedTeam: null,
@@ -23,6 +30,14 @@ export const appReducer = (state = initialState, action) => {
             members: [],
           },
         ],
+      };
+
+    case DELETE_TEAM:
+      return {
+        ...state,
+        teams: state.teams.filter(team => (team.name !== state.selectedTeam)),
+        showTeamOptions: false,
+        selectedTeam: null,
       };
 
     case SELECT_TEAM:

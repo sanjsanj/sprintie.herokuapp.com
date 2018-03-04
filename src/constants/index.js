@@ -4,3 +4,4 @@ export const SELECT_TEAM = 'select_team';
 export const TOGGLE_TEAM_OPTIONS = 'toggle_team_options';
 export const UPDATE_TEAM_SETTINGS = 'update_team_settings';
 export const ADD_MEMBER = 'add_member';
+export const DELETE_TEAM = 'delete_team';

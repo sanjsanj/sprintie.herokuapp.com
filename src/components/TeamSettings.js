@@ -1,9 +1,13 @@
+/* global confirm */
+
 import React from 'react';
 import { connect } from 'react-redux';
 import actions from '../actions';
 import { getSelectedTeam } from '../helpers';
 
-const TeamSettings = ({ showTeamOptions, selectedTeam, updateTeamSettings }) => {
+const TeamSettings = ({
+  showTeamOptions, selectedTeam, updateTeamSettings, deleteTeam,
+}) => {
   if (showTeamOptions) {
     return (
       <div className="container options">
@@ -60,6 +64,16 @@ const TeamSettings = ({ showTeamOptions, selectedTeam, updateTeamSettings }) => 
                 }}
               />
             </div>
+            <div className="form-group col">
+              <label htmlFor="deleteTeam" />
+              <button
+                id="deleteTeam"
+                className="btn btn-light"
+                onClick={() => { if (confirm(`Delete ${selectedTeam.name}?`)) { deleteTeam(); } }} // eslint-disable-line no-alert, no-restricted-globals
+              >
+                Delete {selectedTeam.name}
+              </button>
+            </div>
           </div>
         </form>
       </div>
@@ -81,6 +95,9 @@ const mapDispatchToProps = dispatch => ({
   },
   updateTeamSettings(options) {
     dispatch(actions.updateTeamSettings(options));
+  },
+  deleteTeam() {
+    dispatch(actions.deleteTeam());
   },
 });
 
