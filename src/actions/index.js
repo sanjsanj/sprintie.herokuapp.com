@@ -7,6 +7,7 @@ import {
   UPDATE_MEMBER_SETTINGS,
   UPDATE_TEAM_SETTINGS,
   DELETE_MEMBER,
+  RESET_SPRINT,
 } from '../constants';
 
 const actions = {
@@ -59,6 +60,12 @@ const actions = {
     return {
       type: DELETE_MEMBER,
       memberId,
+    };
+  },
+
+  resetSprint() {
+    return {
+      type: RESET_SPRINT,
     };
   },
 };

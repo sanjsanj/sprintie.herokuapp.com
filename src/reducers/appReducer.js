@@ -9,6 +9,7 @@ import {
   UPDATE_MEMBER_SETTINGS,
   UPDATE_TEAM_SETTINGS,
   DELETE_MEMBER,
+  RESET_SPRINT,
 } from '../constants';
 
 export const initialState = {
@@ -82,11 +83,6 @@ export const appReducer = (state = initialState, action) => {
         teams: [
           ...state.teams.map((team) => {
             if (team.name === state.selectedTeam) {
-              // return existing team if unnamed member exists
-              // if (team.members.map(member => (member.name === 'Enter Name')).includes(true)) {
-              //   return team;
-              // }
-              // return team with new unnamed member
               return {
                 ...team,
                 members: [
@@ -100,7 +96,6 @@ export const appReducer = (state = initialState, action) => {
                 ],
               };
             }
-            // return teams that aren't selected
             return team;
           }),
         ],
@@ -111,12 +106,10 @@ export const appReducer = (state = initialState, action) => {
         ...state,
         teams: [
           ...state.teams.map((team) => {
-            // get the selected team
             if (team.name === state.selectedTeam) {
               return {
                 ...team,
                 members: team.members.map((member) => {
-                  // get the right member
                   if (member.memberId === action.options.memberId) {
                     return {
                       ...member,
@@ -127,7 +120,6 @@ export const appReducer = (state = initialState, action) => {
                   }
                   return member;
                 }),
-                // update their settings or default
               };
             }
             return team;
@@ -140,17 +132,20 @@ export const appReducer = (state = initialState, action) => {
         ...state,
         teams: [
           ...state.teams.map((team) => {
-          // get the selected team
             if (team.name === state.selectedTeam) {
               return {
                 ...team,
                 members: team.members.filter(member => (member.memberId !== action.memberId)),
-              // update their settings or default
               };
             }
             return team;
           }),
         ],
+      };
+
+    case RESET_SPRINT:
+      return {
+        ...state,
       };
 
     default:

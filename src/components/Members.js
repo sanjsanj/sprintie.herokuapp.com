@@ -41,12 +41,38 @@ const Members = ({ selectedTeam, updateMemberSettings, deleteMember }) => (
             </td>
             <td>
               <div className="">
-                <input className="form-control" type="number" placeholder="0" step=".5" min="0" max="10" />
+                <input
+                  className="form-control"
+                  type="number"
+                  placeholder={member.dayOffEverySprint}
+                  step=".5"
+                  min="0"
+                  max="10"
+                  onChange={(event) => {
+                    updateMemberSettings({
+                      memberId: member.memberId,
+                      dayOffEverySprint: event.target.value,
+                    });
+                  }}
+                />
               </div>
             </td>
             <td>
               <div className="">
-                <input className="form-control" type="number" placeholder="0" step=".5" min="0" max="10" />
+                <input
+                  className="form-control"
+                  type="number"
+                  placeholder={member.daysOffThisSprint}
+                  step=".5"
+                  min="0"
+                  max="10"
+                  onChange={(event) => {
+                    updateMemberSettings({
+                      memberId: member.memberId,
+                      daysOffThisSprint: event.target.value,
+                    });
+                  }}
+                />
               </div>
             </td>
           </tr>
@@ -59,7 +85,6 @@ const Members = ({ selectedTeam, updateMemberSettings, deleteMember }) => (
 function mapStateToProps(state) {
   return {
     selectedTeam: getSelectedTeam(state),
-    // selectedMember: getSelectedMember(state),
   };
 }
 
