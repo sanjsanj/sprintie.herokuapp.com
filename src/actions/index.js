@@ -3,7 +3,6 @@ import {
   ADD_TEAM,
   DELETE_TEAM,
   SELECT_TEAM,
-  TOGGLE_TEAM_OPTIONS,
   UPDATE_MEMBER_SETTINGS,
   UPDATE_TEAM_SETTINGS,
   DELETE_MEMBER,
@@ -27,12 +26,6 @@ const actions = {
     return {
       type: SELECT_TEAM,
       selectedTeam,
-    };
-  },
-
-  toggleTeamOptions() {
-    return {
-      type: TOGGLE_TEAM_OPTIONS,
     };
   },
 

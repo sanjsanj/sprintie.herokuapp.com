@@ -29,6 +29,7 @@ export function getPoints(selectedTeam) {
     ${potentialPoints} potential points in sprint
     ${devAwayDays} dev away days
     ${meetingDays} meeting days
+    
     *** ${actualPoints} actual points this sprint ***
     `);
 }

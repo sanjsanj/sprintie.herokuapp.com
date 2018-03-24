@@ -4,23 +4,13 @@ import actions from '../actions';
 import { getSelectedTeam, getPoints } from '../helpers';
 
 const TeamSettingsToggle = ({
-  selectedTeam, toggleTeamOptions, addMember, resetSprint, calculatePoints,
+  selectedTeam, addMember, resetSprint, calculatePoints,
 }) => {
   if (selectedTeam === null) {
     return null;
   }
   return (
     <div className="container options row">
-      <button
-        type="button"
-        className="btn btn-light col"
-        onClick={() => { toggleTeamOptions(); }}
-      >
-        {selectedTeam.name} Settings
-      </button>
-
-      <div className="col" />
-
       <button
         className="btn btn-light"
         onClick={() => { addMember(); }}
@@ -58,9 +48,6 @@ function mapStateToProps(state) {
 }
 
 const mapDispatchToProps = dispatch => ({
-  toggleTeamOptions() {
-    dispatch(actions.toggleTeamOptions());
-  },
   addMember() {
     dispatch(actions.addMember());
   },

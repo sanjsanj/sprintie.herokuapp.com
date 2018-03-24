@@ -5,7 +5,6 @@ import {
   ADD_TEAM,
   DELETE_TEAM,
   SELECT_TEAM,
-  TOGGLE_TEAM_OPTIONS,
   UPDATE_MEMBER_SETTINGS,
   UPDATE_TEAM_SETTINGS,
   DELETE_MEMBER,
@@ -14,7 +13,6 @@ import {
 
 export const initialState = {
   selectedTeam: null,
-  showTeamOptions: false,
   teams: [],
 };
 
@@ -42,7 +40,6 @@ export const appReducer = (state = initialState, action) => {
       return {
         ...state,
         teams: state.teams.filter(team => (team.name !== state.selectedTeam)),
-        showTeamOptions: false,
         selectedTeam: null,
       };
 
@@ -50,13 +47,6 @@ export const appReducer = (state = initialState, action) => {
       return {
         ...state,
         selectedTeam: action.selectedTeam,
-        showTeamOptions: false,
-      };
-
-    case TOGGLE_TEAM_OPTIONS:
-      return {
-        ...state,
-        showTeamOptions: !state.showTeamOptions,
       };
 
     case UPDATE_TEAM_SETTINGS:
