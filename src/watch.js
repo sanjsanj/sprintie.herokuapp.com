@@ -8,10 +8,17 @@ const config = require('react-scripts/config/webpack.config.dev.js');
 config.entry = config.entry.filter(entry => !entry.includes('webpackHotDevClient'));
 
 config.output.path = paths.appBuild;
-paths.publicUrl = `${paths.appBuild  }/`;
+paths.publicUrl = `${paths.appBuild}/`;
 
 // removes react-dev-utils/webpackHotDevClient.js at first in the array
 config.entry.shift();
+
+function copyPublicFolder() {
+  fs.copySync(paths.appPublic, paths.appBuild, {
+    dereference: true,
+    filter: file => file !== paths.appHtml,
+  });
+}
 
 webpack(config).watch({}, (err, stats) => {
   if (err) {
@@ -24,10 +31,3 @@ webpack(config).watch({}, (err, stats) => {
     colors: true,
   }));
 });
-
-function copyPublicFolder() {
-  fs.copySync(paths.appPublic, paths.appBuild, {
-    dereference: true,
-    filter: file => file !== paths.appHtml,
-  });
-}

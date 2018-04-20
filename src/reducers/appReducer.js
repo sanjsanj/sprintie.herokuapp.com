@@ -108,6 +108,9 @@ export const appReducer = (state = initialState, action) => {
                       name: action.options.name || member.name,
                       daysOffEverySprint: action.options.daysOffEverySprint || member.daysOffEverySprint,
                       daysOffThisSprint: action.options.daysOffThisSprint || member.daysOffThisSprint,
+                      stackContribution: action.options.stackContribution === 0
+                        ? 0
+                        : action.options.stackContribution || member.stackContribution || 50,
                     };
                   }
                   return member;

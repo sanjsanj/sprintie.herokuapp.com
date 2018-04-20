@@ -22,14 +22,23 @@ export function getPoints(selectedTeam) {
 
   const actualPoints = potentialPoints - devAwayPoints - meetingPoints;
 
+  const backEndPoints = selectedTeam.members.reduce(
+    (sum, member) =>
+      sum + Number(member.daysOffEverySprint) + Number(member.daysOffThisSprint),
+    0,
+  );
+
+  const frontEndPoints = 10;
+
   // eslint-disable-next-line
   alert(`
     ${teamName} has ${daysInSprint} days in sprint
-    And ${selectedTeam.members.length} number of devs
-    ${potentialPoints} potential points in sprint
+    And ${selectedTeam.members.length} devs
     ${devAwayDays} dev away days
     ${meetingDays} meeting days
     
     *** ${actualPoints} actual points this sprint ***
+    *** ${backEndPoints} Back end points ***
+    *** ${frontEndPoints} Front end points ***
     `);
 }

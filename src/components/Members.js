@@ -1,15 +1,26 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import Slider from 'react-rangeslider';
+import 'react-rangeslider/lib/index.css';
 import actions from '../actions';
 import { getSelectedTeam } from '../helpers';
 
-const Members = ({ selectedTeam, updateMemberSettings, deleteMember }) => (
+function getMemberStackContribution(member) {
+  return member.stackContribution === 0
+    ? 0
+    : member.stackContribution || 50;
+}
+
+const Members = ({
+  selectedTeam, updateMemberSettings, deleteMember,
+}) => (
   <div className="container">
     <table className="table table-striped">
       <thead>
         <tr>
           <th>Name</th>
           <th />
+          <th className="table-restrict-width">Back end - Front end</th>
           <th>Days off every sprint</th>
           <th>Days off this sprint</th>
         </tr>
@@ -38,6 +49,22 @@ const Members = ({ selectedTeam, updateMemberSettings, deleteMember }) => (
               >
                 Delete
               </button>
+            </td>
+            <td>
+              <div>
+                <Slider
+                  value={getMemberStackContribution(member)}
+                  min={0}
+                  max={100}
+                  step={10}
+                  onChange={(value) => {
+                    updateMemberSettings({
+                      memberId: member.memberId,
+                      stackContribution: value,
+                    });
+                  }}
+                />
+              </div>
             </td>
             <td>
               <div className="">
