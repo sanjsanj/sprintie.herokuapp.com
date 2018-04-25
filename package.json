@@ -17,7 +17,7 @@
     "e2e-tests": "cypress open",
     "scss": "node-sass-chokidar src/styles/ -o src/styles/",
     "scss:watch": "npm run scss && node-sass-chokidar src/styles/ -o src/styles/ --watch --recursive",
-    "start": "react-scripts start",
+    "start": "PORT=3010 react-scripts start",
     "build": "npm run scss && react-scripts build",
     "build:watch": "node src/watch.js",
     "test": "react-scripts test --env=jsdom",
