@@ -29,10 +29,12 @@ describe('Kitchen Sink', () => {
     it('cy.get() - query DOM elements', () => {
       // https://on.cypress.io/get
 
-      // Get DOM elements by class
+      // Get DOM elements by class and ids
       cy.get('.nav-link').should('contain', '+');
       cy.get('#btn-add-member').should('contain', 'Add Member');
       cy.get('#btn-reset-sprint').should('contain', 'Reset This Sprint');
+      cy.get('#btn-calculate-points').should('contain', 'Calculate  Sprint Points');
+      
 
       // Use CSS selectors just like jQuery
     });
