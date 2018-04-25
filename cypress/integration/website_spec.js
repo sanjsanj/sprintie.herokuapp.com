@@ -1,42 +1,24 @@
-describe('Kitchen Sink', () => {
-  it('.should() - assert that <title> is correct', () => {
-    // https://on.cypress.io/visit
+describe('Sprintie', () => {
+  it('Assert that <title> is correct', () => {
     cy.visit('http://localhost:3010/');
-
-    // Here we've made our first assertion using a '.should()' command.
-    // An assertion is comprised of a chainer, subject, and optional value.
-
-    // https://on.cypress.io/should
-    // https://on.cypress.io/and
-
-    // https://on.cypress.io/title
     cy.title().should('include', 'Sprintie!');
-    //   ↲               ↲            ↲
-    // subject        chainer      value
   });
 
   context('Querying', () => {
     beforeEach(() => {
-      // Visiting our app before each test removes any state build up from
-      // previous tests. Visiting acts as if we closed a tab and opened a fresh one
       cy.visit('http://localhost:3010/');
     });
 
-    // Let's query for some DOM elements and make assertions
-    // The most commonly used query is 'cy.get()', you can
-    // think of this like the '$' in jQuery
-
-    it('cy.get() - query DOM elements', () => {
-      // https://on.cypress.io/get
-
-      // Get DOM elements by class and ids
-      cy.get('.nav-link').should('contain', '+');
-      cy.get('#btn-add-member').should('contain', 'Add Member');
-      cy.get('#btn-reset-sprint').should('contain', 'Reset This Sprint');
-      cy.get('#btn-calculate-points').should('contain', 'Calculate  Sprint Points');
-      
-
-      // Use CSS selectors just like jQuery
+    it('Query DOM elements', () => {
+      cy.get('.nav-link').should('match', 'button').should('contain', '+');
+      cy.get('#btn-add-member').should('match', 'button').should('contain', 'Add Member');
+      cy.get('#btn-reset-sprint').should('match', 'button').should('contain', 'Reset This Sprint');
+      cy.get('#btn-calculate-points').should('match', 'button').should('contain', 'Calculate  Sprint Points');
+      cy.get('#deleteTeam').should('match', 'button').should('contain', 'Delete');
+      cy.get('#teamName').should('match', 'input');
+      cy.get('#weeksPerSprint').should('match', 'input');
+      cy.get('#pointsPerDevPerDay').should('match', 'input');
+      cy.get('#adjustmentPts').should('match', 'input');
     });
   });
 });
