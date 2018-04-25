@@ -40,5 +40,5 @@ export function getPoints(selectedTeam) {
     *** ${actualPoints} actual points this sprint ***
     *** ${backEndPoints} Back end points ***
     *** ${frontEndPoints} Front end points ***
-    `);
+  `);
 }
