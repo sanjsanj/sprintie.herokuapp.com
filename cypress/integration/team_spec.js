@@ -39,7 +39,6 @@ describe('Sprintie', () => {
     });
 
     it('Deletes Team', () => {
-      // cy.get().should('have.value', teamName);
       cy.get('#teamName').type(teamName);
       cy.get('#weeksPerSprint').type(weeksPerSprint);
       cy.get('#pointsPerDevPerDay').type(pointsPerDevPerDay);
