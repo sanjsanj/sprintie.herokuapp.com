@@ -7,18 +7,13 @@ describe('Sprintie', () => {
   const pointsPerDevPerDay = '1';
   const adjustmentPts = '3';
 
-  it('Assert that <title> is correct', () => {
-    cy.visit('http://localhost:3010/');
-    cy.title().should('include', 'Sprintie!');
-  });
-
-  context('Actions', () => {
+  context('When a new team is added', () => {
     beforeEach(() => {
       cy.visit('http://localhost:3010/');
       cy.get('.nav-link').click();
     });
 
-    it('Adds team', () => {
+    it('Should populate placeholder values', () => {
       cy.get('.nav-link.active').should('contain', teamPlaceHolder);
       cy.get('#btn-calculate-points').should('match', 'button').should('contain', `Calculate ${teamPlaceHolder} Sprint Points`);
       cy.get('#deleteTeam').should('match', 'button').should('contain', `Delete ${teamPlaceHolder}`);
@@ -28,7 +23,7 @@ describe('Sprintie', () => {
       cy.get('#adjustmentPts').should('have.attr', 'placeholder', '0');
     });
 
-    it('Populate fields', () => {
+    it('Should name the team and update the points values', () => {
       cy.get('#teamName').type(teamName).should('have.value', teamName);
       cy.get('.nav-link.active').should('contain', teamName);
       cy.get('#btn-calculate-points').should('match', 'button').should('contain', `Calculate ${teamName} Sprint Points`);
@@ -38,7 +33,7 @@ describe('Sprintie', () => {
       cy.get('#adjustmentPts').type(adjustmentPts).should('have.value', adjustmentPts);
     });
 
-    it('Deletes Team', () => {
+    it('Should delete the team', () => {
       cy.get('#teamName').type(teamName);
       cy.get('#weeksPerSprint').type(weeksPerSprint);
       cy.get('#pointsPerDevPerDay').type(pointsPerDevPerDay);
