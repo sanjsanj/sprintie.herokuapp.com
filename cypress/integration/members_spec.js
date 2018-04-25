@@ -25,15 +25,19 @@ describe('Sprintie', () => {
             it('should Delete a row in the memeber table when Delete button is clicked', () => {
                 cy.get('.table-striped tbody').children().should('have.length', 1);
                 cy.contains('Delete').click();
-                cy.get('.table-striped tbody').children().should('have.length', 0);
-                
+                cy.get('.table-striped tbody').children().should('have.length', 0);                
 
             });
             it('should let us set evevery sprint days off for each memeber', () => {
-                    
+                cy.get('.day-off-every-sprint').click()
+                .type('1')
+                .should('have.attr', 'placeholder', '1')
+    
             });
             it('should let us set this sprint days off for each memeber', () => {
-                    
+                cy.get('.day-off-this-sprint').click()
+                .type('1')
+                .should('have.attr', 'placeholder', '1');
             });
         });
     });
