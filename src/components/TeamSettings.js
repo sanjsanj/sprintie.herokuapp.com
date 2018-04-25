@@ -66,7 +66,7 @@ const TeamSettings = ({
             id="deleteTeam"
             className="btn btn-light"
             // eslint-disable-next-line
-            onClick={() => { if (confirm(`Delete ${selectedTeam.name}?`)) { deleteTeam(); } }}
+            onClick={() => { if (confirm(`Are you sure you want to delete ${selectedTeam.name}?`)) { deleteTeam(); } }}
           >
             Delete {selectedTeam.name}
           </button>
