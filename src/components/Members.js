@@ -69,7 +69,7 @@ const Members = ({
             <td>
               <div className="">
                 <input
-                  className="form-control"
+                  className="form-control day-off-every-sprint"
                   type="number"
                   placeholder={member.daysOffEverySprint}
                   step=".5"
@@ -87,7 +87,7 @@ const Members = ({
             <td>
               <div className="">
                 <input
-                  className="form-control"
+                  className="form-control day-off-this-sprint"
                   type="number"
                   placeholder={member.daysOffThisSprint}
                   step=".5"
