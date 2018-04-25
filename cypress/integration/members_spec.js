@@ -1,30 +1,40 @@
 describe('Sprintie', () => {
-    context('Querying', () => {
+    context('When New Team is cliccked', () => {
         beforeEach(() => {
         // Visiting our app before each test removes any state build up from
         // previous tests. Visiting acts as if we closed a tab and opened a fresh one
         cy.visit('http://localhost:3010/');
+        cy.get('.nav-link').click();
         });
 
-        it('should add a new row in the memeber table when Add Memeber button is clicked', () => {
-            cy.get('.nav-link').click();
+        it('should add a new row in the memeber table when Add Memeber button is clicked', () => {            
             cy.get('.table-striped tbody').children().should('have.length', 0);
             cy.get('#btn-add-member').click();
             cy.get('.table-striped tbody').children().should('have.length', 1);
             cy.get('#btn-add-member').click();
-            cy.get('.table-striped tbody').children().should('have.length', 2)
+            cy.get('.table-striped tbody').children().should('have.length', 2);
         });
-        it('should let us change member name', () => {
+        context('When Add Memeber button is clicked', () => {
+            beforeEach(() => {
+                cy.get('#btn-add-member').click();
+            });
+            it('should update the Name when type while the input is focus', () => {
+                cy.get('.memberName').click().type('test')
+                .should('have.attr', 'placeholder', 'test')
+            });
+            it('should Delete a row in the memeber table when Delete button is clicked', () => {
+                cy.get('.table-striped tbody').children().should('have.length', 1);
+                cy.contains('Delete').click();
+                cy.get('.table-striped tbody').children().should('have.length', 0);
                 
-        });
-        it('should let us delete member', () => {
-                
-        });
-        it('should let us set evevery sprint days off for each memeber', () => {
-                
-        });
-        it('should let us set this sprint days off for each memeber', () => {
-                
+
+            });
+            it('should let us set evevery sprint days off for each memeber', () => {
+                    
+            });
+            it('should let us set this sprint days off for each memeber', () => {
+                    
+            });
         });
     });
 });
