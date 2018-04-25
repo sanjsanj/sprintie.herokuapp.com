@@ -13,6 +13,7 @@ const TeamSettingsToggle = ({
     <div className="container options row">
       <button
         className="btn btn-light"
+        id="btn-add-member"
         onClick={() => { addMember(); }}
       >
         Add Member
@@ -22,6 +23,7 @@ const TeamSettingsToggle = ({
 
       <button
         className="btn btn-light"
+        id="btn-reset-sprint"
         // eslint-disable-next-line
         onClick={() => { if (confirm(`Reset ${selectedTeam.name} Sprint?`)) { resetSprint(); } }}
       >
@@ -33,6 +35,7 @@ const TeamSettingsToggle = ({
       <button
         type="button"
         className="btn btn-info col"
+        id="btn-calculate-points"
         onClick={() => { calculatePoints(selectedTeam); }}
       >
         Calculate {selectedTeam.name} Sprint Points
